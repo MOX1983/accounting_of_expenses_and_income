@@ -8,7 +8,9 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
+import static com.example.finance.ReadDate.readDateCSV;
 import static com.example.finance.WriteDate.writeDateCSV;
 
 public class HelloController {
@@ -36,23 +38,26 @@ public class HelloController {
     @FXML
     private ChoiceBox<String> categoryIncome;
 
-    @FXML
-    private TableView<String> tableExpenses;
+    ObservableList<Categor> listExpenses = FXCollections.observableArrayList(readDateCSV(file));
+    ObservableList<Categor> listIncome = FXCollections.observableArrayList(readDateCSV(IncomeFile));
 
     @FXML
-    private TableView<String> tableIncome;
+    private TableView<Categor> tableExpenses;
 
     @FXML
-    private TableColumn<?, ?> addmon_income_tabl;
+    private TableView<Categor> tableIncome;
 
     @FXML
-    private TableColumn<?, ?> category_expenses_tabl;
+    private TableColumn<Categor, Double> addmon_income_tabl;
 
     @FXML
-    private TableColumn<?, ?> category_income_tabl;
+    private TableColumn<Categor, String> category_expenses_tabl;
 
     @FXML
-    private TableColumn<?, ?> mon_income_tabl;
+    private TableColumn<Categor, String> category_income_tabl;
+
+    @FXML
+    private TableColumn<Categor, Double> mon_income_tabl;
 
     @FXML
     private TextField textExpenses;
@@ -70,12 +75,21 @@ public class HelloController {
     void initialize() {
         category_expenses.setItems(langs);
         ButtonExpenses.setOnAction(event -> {
-            writeDateCSV(file, category_expenses.getValue(), textExpenses.getText());
+            writeDateCSV(file, new Categor(category_expenses.getValue(), Double.parseDouble(textExpenses.getText())));
         });
+
         categoryIncome.setItems(list);
         ButtonIncome.setOnAction(event -> {
-            writeDateCSV(IncomeFile, categoryIncome.getValue(), textIncome.getText());
+            writeDateCSV(IncomeFile, new Categor(categoryIncome.getValue(), Double.parseDouble(textIncome.getText())));
         });
+
+        category_expenses_tabl.setCellValueFactory(new PropertyValueFactory<Categor, String>("name"));
+        mon_income_tabl.setCellValueFactory(new PropertyValueFactory<Categor, Double>("money"));
+        tableExpenses.setItems(listExpenses);
+
+        category_income_tabl.setCellValueFactory(new PropertyValueFactory<Categor, String>("name"));
+        addmon_income_tabl.setCellValueFactory(new PropertyValueFactory<Categor, Double>("money"));
+        tableIncome.setItems(listIncome);
     }
 
 }

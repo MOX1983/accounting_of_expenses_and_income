@@ -6,19 +6,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import static com.example.finance.ReadDate.readDateCSV;
+import static com.example.finance.SumC.sumCategor;
 
 public class WriteDate {
 
-    public static void writeDateCSV(String filePath, String categoryExpenses, String money){
+    public static void writeDateCSV(String filePath, Categor categor){
         try{
-            ArrayList<String> date = readDateCSV(filePath);
+            ArrayList<Categor> date = readDateCSV(filePath);
             FileWriter file = new FileWriter(filePath);
             BufferedWriter bufferIn = new BufferedWriter(file);
-            String str = categoryExpenses + "," + money;
-            date.add(str);
+            date.add(categor);
+            date = sumCategor(date);
 
-            for(String s : date){
-                bufferIn.write(s);
+            for(Categor s : date){
+                bufferIn.write(s.toString());
                 bufferIn.newLine();
             }
 

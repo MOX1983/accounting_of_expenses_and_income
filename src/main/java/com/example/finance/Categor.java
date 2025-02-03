@@ -2,9 +2,9 @@ package com.example.finance;
 
 public class Categor {
     private String name;
-    private String money;
+    private Double money;
 
-    Categor(String name, String money){
+    Categor(String name, Double money){
         this.name = name;
         this.money = money;
     }
@@ -13,11 +13,17 @@ public class Categor {
         return name;
     }
 
-    public String getMoney() {
+    public Double getMoney() {
         return money;
     }
 
-    public static void sumCategor(){
-
+    public void setMoney(Double money) {
+        this.money += money;
     }
+
+    @Override
+    public String toString() {
+        return name + "," + money;
+    }
+
 }
