@@ -8,30 +8,47 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finance.HelloController">
    <children>
-      <PieChart fx:id="E" layoutX="37.0" layoutY="46.0" prefHeight="258.0" prefWidth="281.0" style="-fx-background-color: FF9999;" title="expenses" />
-      <PieChart fx:id="I" layoutX="411.0" layoutY="46.0" prefHeight="258.0" prefWidth="281.0" style="-fx-background-color: ccff99;" title="income" />
-      <Label layoutX="37.0" layoutY="21.0" text="Expenses" />
-      <Label layoutX="410.0" layoutY="21.0" text="Income" />
-      <Button fx:id="ButtonExpenses" layoutX="281.0" layoutY="308.0" mnemonicParsing="false" text="add" />
-      <Button fx:id="ButtonIncome" layoutX="655.0" layoutY="308.0" mnemonicParsing="false" text="add" />
-      <TableView fx:id="tableIncome" layoutX="411.0" layoutY="345.0" prefHeight="166.0" prefWidth="281.0">
+      <PieChart fx:id="E" layoutX="37.0" layoutY="46.0" prefHeight="258.0" prefWidth="333.0" style="-fx-background-color: FF9999;" />
+      <PieChart fx:id="I" layoutX="411.0" layoutY="46.0" prefHeight="258.0" prefWidth="333.0" style="-fx-background-color: ccff99;" />
+      <Label layoutX="111.0" layoutY="12.0" prefHeight="31.0" prefWidth="85.0" text="Расходы">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="461.0" layoutY="12.0" prefHeight="31.0" prefWidth="91.0" text="Доходы">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Button fx:id="ButtonExpenses" layoutX="301.0" layoutY="308.0" mnemonicParsing="false" text="Добавить" />
+      <Button fx:id="ButtonIncome" layoutX="675.0" layoutY="308.0" mnemonicParsing="false" text="Добавить" />
+      <TableView fx:id="tableIncome" layoutX="411.0" layoutY="345.0" prefHeight="166.0" prefWidth="333.0">
          <columns>
-            <TableColumn fx:id="category_income_tabl" prefWidth="185.0" text="Категории" />
-            <TableColumn fx:id="addmon_income_tabl" prefWidth="95.0" text="Доходы" />
+            <TableColumn fx:id="category_income_tabl" prefWidth="215.0" text="Категории" />
+            <TableColumn fx:id="addmon_income_tabl" prefWidth="117.0" text="Доходы" />
          </columns>
       </TableView>
-      <TableView fx:id="tableExpenses" layoutX="37.0" layoutY="345.0" prefHeight="166.0" prefWidth="281.0">
+      <TableView fx:id="tableExpenses" layoutX="37.0" layoutY="345.0" prefHeight="166.0" prefWidth="333.0">
          <columns>
-            <TableColumn fx:id="category_expenses_tabl" prefWidth="179.0" text="Категории" />
-            <TableColumn fx:id="mon_income_tabl" prefWidth="101.0" text="Траты" />
+            <TableColumn fx:id="category_expenses_tabl" prefWidth="215.0" text="Категории" />
+            <TableColumn fx:id="mon_income_tabl" prefWidth="117.0" text="Траты" />
          </columns>
       </TableView>
       <TextField fx:id="textExpenses" layoutX="37.0" layoutY="308.0" prefHeight="25.0" prefWidth="100.0" />
       <TextField fx:id="textIncome" layoutX="411.0" layoutY="308.0" prefHeight="25.0" prefWidth="100.0" />
-      <ChoiceBox fx:id="category_expenses" layoutX="145.0" layoutY="308.0" prefHeight="25.0" prefWidth="125.0" />
-      <ChoiceBox fx:id="categoryIncome" layoutX="519.0" layoutY="308.0" prefHeight="25.0" prefWidth="125.0" />
+      <ChoiceBox fx:id="category_expenses" layoutX="145.0" layoutY="308.0" prefHeight="25.0" prefWidth="148.0" />
+      <ChoiceBox fx:id="categoryIncome" layoutX="519.0" layoutY="308.0" prefHeight="25.0" prefWidth="148.0" />
+      <Label fx:id="eLable" layoutX="196.0" layoutY="12.0" prefHeight="31.0" prefWidth="85.0" text="Label">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="iLable" layoutX="535.0" layoutY="9.0" prefHeight="37.0" prefWidth="85.0" text="Label">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
